@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                border: 1px #dddddd solid;
+            }
+            th {
+                background: #dddddde0;
+                padding: 4px 8px;
+            }
+            td {
+                border-bottom: 1px #dddddd solid;
+                padding: 4px 8px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <table id="studentsTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Sahiru</td>
+                    <td>23</td>
+                    <td><button type="button" onclick="deleteMe(event)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harindu</td>
+                    <td>20</td>
+                    <td><button type="button" onclick="deleteMe(event)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Gihan</td>
+                    <td>22</td>
+                    <td><button type="button" onclick="deleteMe(event)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addNew()">Add New</button>
+        <button type="button" onclick="addNewSimple()">Add New Simple</button>
+
+        <script>
+
+            function deleteMe(event) {
+                let tr = event.target.closest('tr');
+                tr.remove();
+            }
+
+            function addNew() {
+                let tr = document.createElement('tr');
+
+                let idTd = document.createElement('td');
+                idTd.innerText = '99';
+
+                let nameTd = document.createElement('td');
+                nameTd.innerText = "Some name";
+
+                let ageTd = document.createElement('td');
+                ageTd.innerText = "25";
+
+                let buttonTd = document.createElement('td');
+                let button = document.createElement('button');
+                button.innerText = "delete";
+                button.addEventListener('click', deleteMe);
+                buttonTd.append(button);
+
+                tr.append(idTd);
+                tr.append(nameTd);
+                tr.append(ageTd);
+                tr.append(buttonTd);
+
+                let table = document.getElementById('studentsTable');
+                table.append(tr);
+            }
+
+            function addNewSimple() {
+                let tr = document.createElement('tr');
+                tr.innerHTML = "<td>99 Simple</td><td>Some Name Simple</td><td>25 Simple</td><td><button type=\"button\" onclick=\"deleteMe(event)\">delete</td>";
+                let table = document.getElementById('studentsTable');
+                table.append(tr);
+            }
+        </script>
+    </body>
+</html>

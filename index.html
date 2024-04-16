@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript Practice</title>
+</head>
+
+<body>
+    <h2>Need to understand first</h2>
+    <ul id="mylist">
+        <li>Object <button type="button" onclick="deleteMe(event)">delete</button></li>
+        <li>Variable <button type="button" onclick="deleteMe(event)">delete</button></li>
+        <li>Function <button type="button" onclick="deleteMe(event)">delete</button></li>
+    </ul>
+
+    <button type="button" onclick="addItemToList()">Add Item</button>
+
+    <script>
+        let age = 23; // Create a variable
+
+        // Primitive types
+        /**
+         * 1. number
+         * 2. string
+         * 3. boolean
+         * 4. undefined
+         */
+
+         // Object creation
+         let person = { name: "Harindu", age: 23, address: "Kalutara"};
+         person.name = "Gihan";
+
+         // Function declaration
+         function calculate(n1, n2) {
+            return n1 + n2;
+         }
+
+         // Call a function
+         let total = calculate(12, 15);
+         
+         // getElementById
+         let list = document.getElementById('mylist');
+         
+         function addItemToList() {
+            let item = document.createElement('li');
+            item.innerText = 'Im a new list item';
+
+            list.append(item);
+         }
+
+         function deleteMe(event) {
+            let li = event.target.closest('tr');
+            li.remove();
+         }
+        
+    </script>
+</body>
+
+</html>
